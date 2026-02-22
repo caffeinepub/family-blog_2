@@ -1,0 +1,218 @@
+{
+  "kind": "build_request",
+  "title": "Create family blog with posts, comments, and author profiles",
+  "projectName": "Family Blog",
+  "priority": "normal",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "text": "Create a backend data model for blog posts with fields: id, title, content, author name, creation timestamp, and optional featured image URL",
+      "target": "backend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Blog posts can be created with all required fields",
+        "Each post has a unique identifier",
+        "Posts are stored persistently in stable memory"
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "text": "Implement backend methods to create, read, update, and delete blog posts",
+      "target": "backend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Users can create new blog posts",
+        "Users can retrieve all posts or a single post by ID",
+        "Users can update existing posts",
+        "Users can delete posts"
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "text": "Create a backend data model for comments with fields: id, post id reference, author name, comment text, and timestamp",
+      "target": "backend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Comments are linked to specific blog posts",
+        "Comments persist across canister upgrades",
+        "Each comment has a unique identifier"
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "text": "Implement backend methods to add comments to posts and retrieve all comments for a specific post",
+      "target": "backend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Users can add comments to any blog post",
+        "Comments can be retrieved filtered by post ID",
+        "Comments are returned in chronological order"
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "text": "Build a homepage that displays all blog posts in reverse chronological order with title, author, excerpt, and timestamp",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ]
+      },
+      "acceptanceCriteria": [
+        "All published posts are visible on the homepage",
+        "Posts show newest first",
+        "Each post card shows title, author name, date, and content preview",
+        "Clicking a post navigates to its detail page"
+      ]
+    },
+    {
+      "id": "REQ-6",
+      "text": "Create a blog post detail page that displays the full post content, author information, and all associated comments",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Full post content is rendered with proper formatting",
+        "Author name and publication date are displayed",
+        "All comments for the post are shown below the content",
+        "Page is accessible via unique URL for each post"
+      ]
+    },
+    {
+      "id": "REQ-7",
+      "text": "Implement a comment form on the post detail page allowing users to add new comments with their name and comment text",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Form includes fields for commenter name and comment text",
+        "Form validates that both fields are filled before submission",
+        "After successful submission, the new comment appears in the comment list",
+        "Form clears after successful submission"
+      ]
+    },
+    {
+      "id": "REQ-8",
+      "text": "Create a blog post creation form with fields for title, author name, content, and optional featured image URL",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Form includes all required fields with appropriate input types",
+        "Form validates required fields before submission",
+        "After successful submission, user is redirected to the new post",
+        "Error messages display if submission fails"
+      ]
+    },
+    {
+      "id": "REQ-9",
+      "text": "Implement post editing functionality allowing users to update existing blog posts",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Edit form pre-populates with existing post data",
+        "Users can modify any field",
+        "Changes are saved to the backend",
+        "Updated post displays the modified content"
+      ]
+    },
+    {
+      "id": "REQ-10",
+      "text": "Add a delete button to posts that allows removal with confirmation",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Delete button is visible on post detail or edit pages",
+        "Confirmation dialog appears before deletion",
+        "After confirmation, post is removed from backend",
+        "User is redirected to homepage after deletion"
+      ]
+    },
+    {
+      "id": "REQ-11",
+      "text": "Design and implement a cohesive visual theme inspired by warm, family-oriented aesthetics with earth tones, comfortable typography, and inviting layouts that create a welcoming atmosphere for sharing family stories and memories",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Color palette uses warm, family-friendly tones avoiding blue and purple",
+        "Typography is readable and approachable",
+        "Layout creates a comfortable reading experience",
+        "Design maintains consistency across all pages"
+      ]
+    },
+    {
+      "id": "REQ-12",
+      "text": "Render generated header banner and family photo placeholder images as static assets from frontend/public/assets/generated",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Header banner image displays at the top of the homepage",
+        "Placeholder family photo renders correctly",
+        "Images are served from the static assets directory",
+        "Images have appropriate alt text for accessibility"
+      ]
+    }
+  ],
+  "constraints": [
+    "All backend logic must be implemented in a single Motoko actor in backend/main.mo",
+    "Do not modify files in frontend/src/hooks/useInternetIdentity.ts, frontend/src/hooks/useInternetIdentity.tsx, frontend/src/hooks/useActor.ts, frontend/src/main.tsx, or frontend/src/components/ui"
+  ],
+  "nonGoals": [
+    "User authentication or authorization",
+    "Rich text editor for post content",
+    "Image upload functionality",
+    "Social media sharing",
+    "Email notifications",
+    "Search functionality",
+    "Categories or tags for posts",
+    "Draft post functionality"
+  ],
+  "imageRequirements": {
+    "required": [
+      "Warm, family-oriented header banner with abstract shapes and earth tones (header-banner.dim_1200x300.png)",
+      "Placeholder illustration representing a family gathering or photo album in warm colors (family-placeholder.dim_400x400.png)"
+    ],
+    "edits": []
+  }
+}

@@ -1,0 +1,208 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Family Blog Frontend Implementation",
+  "requirements": [
+    {
+      "id": "REQ-5",
+      "summary": "Build homepage displaying all blog posts in reverse chronological order",
+      "acceptanceCriteria": [
+        "All published posts are visible on the homepage",
+        "Posts show newest first",
+        "Each post card shows title, author name, date, and content preview",
+        "Clicking a post navigates to its detail page"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/HomePage.tsx",
+          "operation": "create",
+          "description": "Create homepage component that fetches all posts using getAllPosts() backend method, sorts them by created_at in descending order, and displays post cards with title, author, timestamp, and content excerpt (first 150 characters). Each card links to the post detail page."
+        },
+        {
+          "path": "frontend/src/components/PostCard.tsx",
+          "operation": "create",
+          "description": "Create reusable PostCard component that accepts a Post object and displays title, author name, formatted date, and content preview. Include Link wrapper for navigation to post detail."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Wire HomePage as the root route ('/') in the React Router configuration."
+        }
+      ]
+    },
+    {
+      "id": "REQ-6",
+      "summary": "Create blog post detail page with full content, author info, and comments",
+      "acceptanceCriteria": [
+        "Full post content is rendered with proper formatting",
+        "Author name and publication date are displayed",
+        "All comments for the post are shown below the content",
+        "Page is accessible via unique URL for each post"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/PostDetailPage.tsx",
+          "operation": "create",
+          "description": "Create post detail page component that extracts post ID from route params, fetches post data using getPost(id) backend method, and fetches comments using getCommentsForPost(id) backend method. Display full post content with author and formatted timestamp. Render CommentList component below post content."
+        },
+        {
+          "path": "frontend/src/components/CommentList.tsx",
+          "operation": "create",
+          "description": "Create CommentList component that accepts an array of Comment objects and renders each comment with author name, timestamp, and comment text in chronological order."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Add route '/post/:id' that renders PostDetailPage component."
+        }
+      ]
+    },
+    {
+      "id": "REQ-7",
+      "summary": "Implement comment form on post detail page for adding new comments",
+      "acceptanceCriteria": [
+        "Form includes fields for commenter name and comment text",
+        "Form validates that both fields are filled before submission",
+        "After successful submission, the new comment appears in the comment list",
+        "Form clears after successful submission"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/CommentForm.tsx",
+          "operation": "create",
+          "description": "Create CommentForm component with controlled inputs for author name and comment text. Validate both fields are non-empty before calling addComment(post_id, author, text) backend method. On success, clear form fields and trigger comment list refresh via callback prop."
+        },
+        {
+          "path": "frontend/src/pages/PostDetailPage.tsx",
+          "operation": "modify",
+          "description": "Add CommentForm component below post content and above CommentList. Pass post ID and refresh callback to reload comments after successful submission."
+        }
+      ]
+    },
+    {
+      "id": "REQ-8",
+      "summary": "Create blog post creation form with all required fields",
+      "acceptanceCriteria": [
+        "Form includes all required fields with appropriate input types",
+        "Form validates required fields before submission",
+        "After successful submission, user is redirected to the new post",
+        "Error messages display if submission fails"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/CreatePostPage.tsx",
+          "operation": "create",
+          "description": "Create post creation page with form containing inputs for title, author name, content (textarea), and optional featured image URL. Validate title, author, and content are non-empty. Call createPost(title, content, author, featured_image) backend method. On success, navigate to the new post detail page using the returned post ID. Display error messages on failure."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Add route '/create' that renders CreatePostPage component. Add navigation link to create page in app header or navigation."
+        }
+      ]
+    },
+    {
+      "id": "REQ-9",
+      "summary": "Implement post editing functionality for updating existing posts",
+      "acceptanceCriteria": [
+        "Edit form pre-populates with existing post data",
+        "Users can modify any field",
+        "Changes are saved to the backend",
+        "Updated post displays the modified content"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/EditPostPage.tsx",
+          "operation": "create",
+          "description": "Create post edit page that extracts post ID from route params, fetches existing post using getPost(id), and pre-populates form fields with current values. Form includes title, author, content, and featured image URL. On submit, call updatePost(id, title, content, author, featured_image) backend method. On success, navigate to updated post detail page."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Add route '/post/:id/edit' that renders EditPostPage component."
+        },
+        {
+          "path": "frontend/src/pages/PostDetailPage.tsx",
+          "operation": "modify",
+          "description": "Add Edit button that links to the edit page for the current post."
+        }
+      ]
+    },
+    {
+      "id": "REQ-10",
+      "summary": "Add delete button with confirmation for post removal",
+      "acceptanceCriteria": [
+        "Delete button is visible on post detail or edit pages",
+        "Confirmation dialog appears before deletion",
+        "After confirmation, post is removed from backend",
+        "User is redirected to homepage after deletion"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/PostDetailPage.tsx",
+          "operation": "modify",
+          "description": "Add Delete button that triggers confirmation dialog. On confirmation, call deletePost(id) backend method. On success, navigate to homepage."
+        },
+        {
+          "path": "frontend/src/components/ConfirmDialog.tsx",
+          "operation": "create",
+          "description": "Create reusable confirmation dialog component that displays a message and provides confirm/cancel actions. Can be triggered programmatically or via state."
+        }
+      ]
+    },
+    {
+      "id": "REQ-11",
+      "summary": "Design and implement warm, family-oriented visual theme with earth tones",
+      "acceptanceCriteria": [
+        "Color palette uses warm, family-friendly tones avoiding blue and purple",
+        "Typography is readable and approachable",
+        "Layout creates a comfortable reading experience",
+        "Design maintains consistency across all pages"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/index.css",
+          "operation": "modify",
+          "description": "Define CSS custom properties for warm color palette using earth tones (browns, tans, soft oranges, warm grays, creams). Set base typography with comfortable, readable font families and appropriate line heights for long-form content."
+        },
+        {
+          "path": "frontend/tailwind.config.js",
+          "operation": "modify",
+          "description": "Extend Tailwind theme with custom warm color palette matching the design system. Define colors for primary (warm brown), secondary (soft orange), background (cream), and text (dark brown). Configure typography settings for comfortable reading."
+        },
+        {
+          "path": "frontend/src/components/Layout.tsx",
+          "operation": "create",
+          "description": "Create Layout component that wraps all pages with consistent header, navigation, and footer. Apply warm background colors and comfortable spacing. Include navigation links to homepage and create post page."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Wrap all route components with Layout component to ensure consistent visual theme across all pages."
+        }
+      ]
+    },
+    {
+      "id": "REQ-12",
+      "summary": "Render generated header banner and family photo placeholder images as static assets",
+      "acceptanceCriteria": [
+        "Header banner image displays at the top of the homepage",
+        "Placeholder family photo renders correctly",
+        "Images are served from the static assets directory",
+        "Images have appropriate alt text for accessibility"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/Layout.tsx",
+          "operation": "modify",
+          "description": "Add header banner image at the top of the Layout component using the generated asset at frontend/public/assets/generated/header-banner.dim_1200x300.png. Include alt text: 'Family blog header with warm earth tones and abstract shapes'."
+        },
+        {
+          "path": "frontend/src/pages/HomePage.tsx",
+          "operation": "modify",
+          "description": "Display the generated family placeholder image from frontend/public/assets/generated/family-placeholder.dim_400x400.png in a welcoming section on the homepage. Include alt text: 'Placeholder illustration of family gathering'."
+        }
+      ]
+    }
+  ]
+}

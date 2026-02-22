@@ -1,0 +1,85 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    :root {
+        --radius: 0.75rem;
+        /* Warm cream background */
+        --background: 0.97 0.02 65;
+        --foreground: 0.25 0.03 45;
+        /* Warm card tones */
+        --card: 0.99 0.01 65;
+        --card-foreground: 0.25 0.03 45;
+        --popover: 0.99 0.01 65;
+        --popover-foreground: 0.25 0.03 45;
+        /* Rich brown primary */
+        --primary: 0.42 0.08 45;
+        --primary-foreground: 0.98 0.01 65;
+        /* Soft terracotta secondary */
+        --secondary: 0.88 0.04 55;
+        --secondary-foreground: 0.30 0.03 45;
+        /* Muted warm gray */
+        --muted: 0.92 0.02 60;
+        --muted-foreground: 0.50 0.03 50;
+        /* Warm accent */
+        --accent: 0.85 0.08 50;
+        --accent-foreground: 0.30 0.03 45;
+        /* Warm red for destructive */
+        --destructive: 0.55 0.20 25;
+        --destructive-foreground: 0.98 0.01 65;
+        /* Subtle borders */
+        --border: 0.90 0.02 60;
+        --input: 0.90 0.02 60;
+        --ring: 0.42 0.08 45;
+        /* Chart colors - warm palette */
+        --chart-1: 0.65 0.15 35;
+        --chart-2: 0.70 0.12 50;
+        --chart-3: 0.60 0.18 25;
+        --chart-4: 0.75 0.10 60;
+        --chart-5: 0.55 0.20 40;
+    }
+
+    .dark {
+        /* Dark warm background */
+        --background: 0.20 0.03 40;
+        --foreground: 0.95 0.02 65;
+        /* Dark card */
+        --card: 0.25 0.03 42;
+        --card-foreground: 0.95 0.02 65;
+        --popover: 0.23 0.03 40;
+        --popover-foreground: 0.95 0.02 65;
+        /* Lighter brown for dark mode primary */
+        --primary: 0.75 0.08 50;
+        --primary-foreground: 0.25 0.03 45;
+        /* Dark secondary */
+        --secondary: 0.35 0.04 45;
+        --secondary-foreground: 0.95 0.02 65;
+        /* Dark muted */
+        --muted: 0.30 0.03 42;
+        --muted-foreground: 0.70 0.03 55;
+        /* Dark accent */
+        --accent: 0.45 0.08 48;
+        --accent-foreground: 0.95 0.02 65;
+        /* Brighter destructive for dark mode */
+        --destructive: 0.60 0.22 28;
+        --destructive-foreground: 0.95 0.02 65;
+        /* Dark borders */
+        --border: 0.32 0.03 42;
+        --input: 0.32 0.03 42;
+        --ring: 0.65 0.08 50;
+        /* Dark chart colors */
+        --chart-1: 0.70 0.15 40;
+        --chart-2: 0.75 0.12 55;
+        --chart-3: 0.65 0.18 30;
+        --chart-4: 0.80 0.10 65;
+        --chart-5: 0.60 0.20 45;
+    }
+
+    * {
+        @apply border-border;
+    }
+    body {
+        @apply bg-background text-foreground;
+    }
+}

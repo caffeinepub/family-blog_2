@@ -1,0 +1,162 @@
+{
+  "kind": "feature_evidence_report",
+  "features": [
+    {
+      "featureId": "feature-build-a-homepage-that-displays-all-blog-posts-in-reverse-chronological-order-with-title-author-excerpt-and-timestamp",
+      "featureTitle": "Build a homepage that displays all blog posts in reverse chronological order with title, author, excerpt, and timestamp",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/components/PostCard.tsx",
+        "frontend/src/pages/HomePage.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-5"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-create-a-blog-post-detail-page-that-displays-the-full-post-content-author-information-and-all-associated-comments",
+      "featureTitle": "Create a blog post detail page that displays the full post content, author information, and all associated comments",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/components/CommentList.tsx",
+        "frontend/src/pages/PostDetailPage.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-6"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-implement-a-comment-form-on-the-post-detail-page-allowing-users-to-add-new-comments-with-their-name-and-comment-text",
+      "featureTitle": "Implement a comment form on the post detail page allowing users to add new comments with their name and comment text",
+      "files": [
+        "frontend/src/components/CommentForm.tsx",
+        "frontend/src/pages/PostDetailPage.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-7"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-create-a-blog-post-creation-form-with-fields-for-title-author-name-content-and-optional-featured-image-url",
+      "featureTitle": "Create a blog post creation form with fields for title, author name, content, and optional featured image URL",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/pages/CreatePostPage.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-8"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-implement-post-editing-functionality-allowing-users-to-update-existing-blog-posts",
+      "featureTitle": "Implement post editing functionality allowing users to update existing blog posts",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/pages/EditPostPage.tsx",
+        "frontend/src/pages/PostDetailPage.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-9"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-add-a-delete-button-to-posts-that-allows-removal-with-confirmation",
+      "featureTitle": "Add a delete button to posts that allows removal with confirmation",
+      "files": [
+        "frontend/src/components/ConfirmDialog.tsx",
+        "frontend/src/pages/PostDetailPage.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-10"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-design-and-implement-a-cohesive-visual-theme-inspired-by-warm-family-oriented-aesthetics-with-earth-tones-comfortable-typography-and-inviting-layouts-that-create-a-welcoming-atmosphere-for-sharing-family-stories-and-memories",
+      "featureTitle": "Design and implement a cohesive visual theme inspired by warm, family-oriented aesthetics with earth tones, comfortable typography, and inviting layouts that create a welcoming atmosphere for sharing family stories and memories",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/components/Layout.tsx",
+        "frontend/src/index.css",
+        "frontend/tailwind.config.js"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-11"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-render-generated-header-banner-and-family-photo-placeholder-images-as-static-assets-from-frontend-public-assets-generated",
+      "featureTitle": "Render generated header banner and family photo placeholder images as static assets from frontend/public/assets/generated",
+      "files": [
+        "frontend/src/components/Layout.tsx",
+        "frontend/src/pages/HomePage.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-12"
+      ],
+      "confidence": "high"
+    }
+  ]
+}
